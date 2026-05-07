@@ -1,1 +1,24 @@
+name: Logic Verification CI
 
+on:
+  push: # This tells GitHub when to run the script
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest # We use Ubuntu (Linux) because it's the industry standard for servers
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.11"
+
+    - name: Run Core Tests
+      # It runs the file you merged in the last step.
+      run: python test_core.py
