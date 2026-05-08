@@ -26,7 +26,7 @@ jobs:
       run: python test_core.py
 
     - name: Post Success Comment
-      if: success()
+      if: success() && github.event_name == 'pull_request'
       uses: thollander/actions-comment-pull-request@v2
       with:
         message: |
@@ -39,7 +39,7 @@ jobs:
         github_token: ${{ secrets.GITHUB_TOKEN }}
     
     - name: Failure Comment
-      if: failure()
+      if: failure() && github.event_name == 'pull_request'
       uses: thollander/actions-comment-pull-request@v2
       with:
         message: "### ❌ LOGIC COLLAPSE\nThe automated suite has detected that 1 is no longer 1. Please fix the broken logic before merging."
