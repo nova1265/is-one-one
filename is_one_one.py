@@ -48,6 +48,27 @@ def is_one_using_interdimensional_tax_fraud():
 def is_one_using_binary():
     return int("1", 2) == 1
 
+def is_one_under_extreme_pressure():
+    # Hide the number 1 inside 50 layers of dictionaries
+    vault = {"val": 1}
+    for _ in range(50):
+        vault = {"layer": vault}
+    
+    # Manually dig it back out
+    current = vault
+    while "layer" in current:
+        current = current["layer"]
+        
+    return current["val"] == 1
+
+def is_one_using_roman_numerals():
+    roman="I"
+    roman_values={"I":1,"V":5,"X":10}
+    total=0
+    for char in roman:
+        total+= roman_values[char]
+    return total == 1
+
 def is_one_just_to_be_sure(): 
     # The ultimate recursive confirmation
     return all([
@@ -56,7 +77,13 @@ def is_one_just_to_be_sure():
         is_one_using_time_travel(),
         is_one_using_interdimensional_tax_fraud(),# 👈 added here also (extra chaos 😄)
         is_one_using_binary(),
+        is_one_using_interdimensional_tax_fraud(),
+        is_one_using_roman_numerals(), # 👈 added here also (extra chaos 😄)
+        is_one_under_extreme_pressure(), # New chaos added here
     ])
+
+
+
 
 def main():
     checks = [
@@ -66,6 +93,9 @@ def main():
         is_one_using_time_travel, 
         is_one_using_interdimensional_tax_fraud,  # 👈 IMPORTANT
         is_one_using_binary,
+        is_one_using_roman_numerals,
+        is_one_using_interdimensional_tax_fraud,
+        is_one_under_extreme_pressure, # 👈 The Vault
     ]
   
     print("🧠 Running overengineered checks to see if 1 == 1:\n")
